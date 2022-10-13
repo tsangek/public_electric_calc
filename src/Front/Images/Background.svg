@@ -1,0 +1,109 @@
+<svg id='dotPatern' 
+xmlns='http://www.w3.org/2000/svg' 
+xmlns:xlink="http://www.w3.org/1999/xlink"
+
+>
+	<defs>
+		<pattern patternUnits="userSpaceOnUse" id="pat1" x="0" y="0" 
+		 width="150" height="150">
+			 <circle fill="#222222" cx="75" cy="75" r="10">
+			 </circle>
+		</pattern>
+	</defs>
+	
+	<defs>
+		<pattern patternUnits="userSpaceOnUse" id="pat2" x="0" y="0" 
+		 width="150" height="150">
+			 <path d="M0 75 H150 M75 0 V150" stroke="#dddddd" stroke-width="7">
+			 </path>
+		</pattern>
+	</defs>
+
+	<defs>
+		<pattern patternUnits="userSpaceOnUse" id="pat3" x="0" y="0" 
+		 width="150" height="150">
+			 <rect x="0" y="0" width="150" height="150" fill="none" stroke="#dddddd" stroke-width="10">
+			 </rect>
+		</pattern>
+	</defs>
+
+	<g id="backgroundInsert" preserveAspectRatio="XMidYMid slice"> 
+		<rect x="-100000" y="-100000" width="200000" height="200000" fill="url(#pat3)" stroke="red" stroke-width="2px"/>
+	</g>
+	
+	<g id="testText" >
+		<rect x="0" y="0" width="200" height="200" fill="red" stroke="green" stroke-width="5px"/>
+	</g>
+
+	<g id="testTextSelected" >
+		<rect x="0" y="0" width="200" height="200" fill="green" stroke="red" stroke-width="5px"/>
+	</g>
+	<g id="resistor" stroke-width="15" pointer-events="visible">
+		<path d="M -300 0 L -200 0"></path>
+		<path d="M -300 0 L -200 0" stroke-width="50" stroke="none" fill="none"></path>
+		<rect x="-200" y="-100" width="400" height="200" fill="none"
+			pointer-events="visible"></rect>
+		<path d="M 200 0 L 300 0"></path>
+		<path d="M 200 0 L 300 0" stroke-width="50" stroke="none" fill="none"></path>
+  	</g>
+	<g id="capacitor" stroke-width="15" pointer-events="visible">
+		<path d="M -300 0 L -100 0"></path>
+		<path d="M -100 -300 L -100 300"></path>
+		<path d="M 100 -300 L 100 300"></path>
+		<path d="M 100 0 L 300 0"></path>
+
+		<path d="M -300 0 L -100 0" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M -100 -300 L -100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 -300 L 100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 0 L 300 0" stroke-width="50" stroke="none" fill="none"></path>
+		<rect x="-100" y="-300" width="200" height="600" stroke="none" fill="none"></rect>
+	</g>
+	<g id="elSource" stroke-width="15" pointer-events="visible">
+
+		<style>
+			.small {	font: italic 155px sans-serif; 
+						cursor: default;}
+		</style>
+		<text x="-50" y="200" class="small">elSource</text>
+		<path d="M -300 0 L -100 0"></path>
+		<path d="M -100 -300 L -100 300"></path>
+		<path d="M 100 -300 L 100 300"></path>
+		<path d="M 100 0 L 300 0"></path>
+
+		<path d="M -300 0 L -100 0" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M -100 -300 L -100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 -300 L 100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 0 L 300 0" stroke-width="50" stroke="none" fill="none"></path>
+		<rect x="-100" y="-300" width="200" height="600" stroke="none" fill="none"></rect>
+	</g>
+	<g id="diode" stroke-width="15" pointer-events="visible">
+
+		<style>
+			.small {	font: italic 155px sans-serif; 
+						cursor: default;}
+		</style>
+		<text x="-50" y="200" class="small">diode</text>
+		<path d="M -300 0 L -100 0"></path>
+		<path d="M -100 -300 L -100 300"></path>
+		<path d="M 100 -300 L 100 300"></path>
+		<path d="M 100 0 L 300 0"></path>
+
+		<path d="M -300 0 L -100 0" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M -100 -300 L -100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 -300 L 100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 0 L 300 0" stroke-width="50" stroke="none" fill="none"></path>
+		<rect x="-100" y="-300" width="200" height="600" stroke="none" fill="none"></rect>
+	</g>
+	<g id="lineStatic" stroke-width="15" pointer-events="visible">
+		<style>
+			.small {	font: italic 155px sans-serif; 
+						cursor: default;}
+		</style>
+		<text x="-50" y="200" class="small">LINE</text>
+		<path d="M -200 200 L 200 -200"></path>
+		<path d="M -200 200 L 200 -200" stroke-width="50" stroke="none" fill="none"></path>
+		
+		
+	</g>
+</svg>
+

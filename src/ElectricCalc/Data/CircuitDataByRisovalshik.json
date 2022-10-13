@@ -1,0 +1,390 @@
+[
+  {
+    "model": "elSource",
+    "type": "LR",
+    "pos": {
+      "x": -3300,
+      "y": -2700
+    },
+    "electricParameters": {
+      "R": 0.21,
+      "L": 0.00115,
+      "D": false,
+      "E": 0
+    },
+    "in": 0,
+    "out": 1
+  },
+  {
+    "model": "elSource",
+    "type": "LR",
+    "pos": {
+      "x": -3300,
+      "y": -1650
+    },
+    "electricParameters": {
+      "R": 0.21,
+      "L": 0.00115,
+      "D": false,
+      "E": 0
+    },
+    "in": 0,
+    "out": 2
+  },
+  {
+    "model": "elSource",
+    "type": "LR",
+    "pos": {
+      "x": -3300,
+      "y": 1350
+    },
+    "electricParameters": {
+      "R": 0.21,
+      "L": 0.00115,
+      "D": false,
+      "E": 0
+    },
+    "in": 0,
+    "out": 3
+  },
+  {
+    "model": "diode",
+    "type": "R",
+    "pos": {
+      "x": 600,
+      "y": -3750
+    },
+    "electricParameters": {
+      "R": 0.0005,
+      "D": true,
+      "E": -0.2
+    },
+    "in": 1,
+    "out": 4
+  },
+  {
+    "model": "diode",
+    "type": "R",
+    "pos": {
+      "x": 600,
+      "y": -3000
+    },
+    "electricParameters": {
+      "R": 0.0005,
+      "D": true,
+      "E": -0.2
+    },
+    "in": 2,
+    "out": 4
+  },
+  {
+    "model": "diode",
+    "type": "R",
+    "pos": {
+      "x": 600,
+      "y": -2250
+    },
+    "electricParameters": {
+      "R": 0.0005,
+      "D": true,
+      "E": -0.2
+    },
+    "in": 3,
+    "out": 4
+  },
+  {
+    "model": "diode",
+    "type": "R",
+    "pos": {
+      "x": 600,
+      "y": 750
+    },
+    "rotateGrad": 180,
+    "electricParameters": {
+      "R": 0.0005,
+      "D": true,
+      "E": -0.2
+    },
+    "in": 5,
+    "out": 3
+  },
+  {
+    "model": "diode",
+    "type": "R",
+    "pos": {
+      "x": 600,
+      "y": 0
+    },
+    "rotateGrad": 180,
+    "electricParameters": {
+      "R": 0.0005,
+      "D": true,
+      "E": -0.2
+    },
+    "in": 5,
+    "out": 2
+  },
+  {
+    "model": "diode",
+    "type": "R",
+    "pos": {
+      "x": 600,
+      "y": -900
+    },
+    "rotateGrad": 180,
+    "electricParameters": {
+      "R": 0.0005,
+      "D": true,
+      "E": -0.2
+    },
+    "in": 5,
+    "out": 1
+  },
+  {
+    "model": "resistor",
+    "type": "R",
+    "pos": {
+      "x": 2700,
+      "y": -1500
+    },
+    "rotateGrad": 90,
+    "electricParameters": {
+      "R": 4580,
+      "D": false,
+      "E": 0
+    },
+    "in": 5,
+    "out": 4
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 300,
+      "y": -3750
+    },
+    "point2": {
+      "x": -2400,
+      "y": -3750
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -3000,
+      "y": -2700
+    },
+    "point2": {
+      "x": -2400,
+      "y": -2700
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -2400,
+      "y": -3750
+    },
+    "point2": {
+      "x": -2400,
+      "y": -900
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -2400,
+      "y": -900
+    },
+    "point2": {
+      "x": 300,
+      "y": -900
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -3600,
+      "y": -2700
+    },
+    "point2": {
+      "x": -3600,
+      "y": 1350
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -900,
+      "y": -2250
+    },
+    "point2": {
+      "x": -900,
+      "y": 1350
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 300,
+      "y": -3000
+    },
+    "point2": {
+      "x": -1500,
+      "y": -3000
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -3000,
+      "y": -1650
+    },
+    "point2": {
+      "x": -1500,
+      "y": -1650
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -1500,
+      "y": -3000
+    },
+    "point2": {
+      "x": -1500,
+      "y": 0
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -1500,
+      "y": 0
+    },
+    "point2": {
+      "x": 300,
+      "y": 0
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 300,
+      "y": -2250
+    },
+    "point2": {
+      "x": -900,
+      "y": -2250
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -3000,
+      "y": 1350
+    },
+    "point2": {
+      "x": 300,
+      "y": 1350
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 300,
+      "y": 1350
+    },
+    "point2": {
+      "x": 300,
+      "y": 750
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 900,
+      "y": -3750
+    },
+    "point2": {
+      "x": 2700,
+      "y": -3750
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 2700,
+      "y": -3750
+    },
+    "point2": {
+      "x": 2700,
+      "y": -1800
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 900,
+      "y": -3000
+    },
+    "point2": {
+      "x": 2700,
+      "y": -3000
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 900,
+      "y": -2250
+    },
+    "point2": {
+      "x": 2700,
+      "y": -2250
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 900,
+      "y": -900
+    },
+    "point2": {
+      "x": 2700,
+      "y": -900
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 900,
+      "y": 0
+    },
+    "point2": {
+      "x": 2700,
+      "y": 0
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 900,
+      "y": 750
+    },
+    "point2": {
+      "x": 2700,
+      "y": 750
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 2700,
+      "y": -1200
+    },
+    "point2": {
+      "x": 2700,
+      "y": 750
+    }
+  }
+]

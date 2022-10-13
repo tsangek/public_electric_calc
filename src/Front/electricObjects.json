@@ -1,0 +1,42 @@
+var electricObjects = [
+  {
+    "model": "lineStatic",
+    "type": "line",
+    "connectors": 2,
+  },
+  {
+    "model": "resistor",
+    "type": "R",
+    
+    "connectors": 2,
+    "R": 4580,
+    "D": false,
+    "E": 0
+  },
+  {
+    "model": "capacitor",
+    "type": "C",
+    "connectors": 2,
+    "C": 20,
+    "D": false,
+    "E": 0
+  },
+  {
+    "model": "diode",
+    "type": "R",
+    "connectors": 2,
+    "R": 0.0005,
+    "D": true,
+    "E": -0.2
+  },
+  {
+    "model": "elSource",
+    "type": "LR",
+    "connectors": 2,
+    "R": 0.21,
+    "L": 0.00115,
+    "D": false,
+    "E": 0
+  }
+  
+];

@@ -1,0 +1,8 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+			<ellipse cx="16" cy="16" rx="4" ry="4" fill="#000000" stroke="#000000" opacity="1" stroke-width="0"/>
+		</pattern>
+	</defs>
+	<rect width="32" height="32" stroke="none" stroke-width="1" fill="url(#grid)"/>
+</svg>

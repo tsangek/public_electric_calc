@@ -1,0 +1,58 @@
+<div class="section ">
+    <div class="row">
+        <div class="col s12">
+            <a class="menuEditItem" href="#">File</a>
+            <a class="menuEditItem" href="#">Edit</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs grey darken-1">
+                <li class="tab col s6"><a class="active white-text" href="#drawPlot">Рисовальщик</a></li>
+                <li class="tab col s6"><a class="white-text" href="#computationPlot">Решальщик</a></li>
+                
+            </ul>
+        </div>
+    </div>
+{{!----------------------------------------------------------------------------------------------------------}}
+{{!-- drawPlot --}}
+    {{> drawPlot}}
+
+    
+{{!-------------------------------------------------------------------------------------------------------}}
+{{!-- computationPlot --}}
+    {{> computationPlot}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/src/Front/includes/svg-injector.min.js"></script>
+<script src="/src/Front/functions.js"></script>
+
+<script type = "text/javascript" src = "/src/Front/ObjectLib.js"></script>
+<script type = "text/javascript" src = "/src/Front/NodeLib.js"></script>
+<script type = "text/javascript" src = "/src/Front/LineLib.js"></script>
+<script type = "text/javascript" src = "/src/Front/ElectricObjects.js"></script>
+<script src = "/src/Front/electricObjects.json"></script>
+<script type = "text/javascript" src = "/src/Front/staticObjects.js"></script>
+<script type = "text/javascript" src = "/src/Front/menus.js"></script>
+<script type = "text/javascript" src = "/src/Front/rightClickMenu.js"></script>
+
+<script type = "text/javascript" src = "/src/Front/index.js"></script>
+<script type = "text/javascript" src = "/src/Front/controls.js"></script>
+
+<script type = "text/javascript" src = "/src/ElectricCalc/Math.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/Plotly.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/graph.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/uzel.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/rebro.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/solver.js"></script>    
+<script type = "text/javascript" src = "/src/ElectricCalc/index.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/iterator.js"></script>
+<script>   
+    var el = document.querySelector('.tabs');
+    var tabsInit = M.Tabs.init(el, {});
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var selectInstances = M.FormSelect.init(elems, {});
+    });
+</script>

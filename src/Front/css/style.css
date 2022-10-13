@@ -1,0 +1,217 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body * {
+  color: #595959;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  
+  /* display: flex;
+  min-height: 100vh;
+  flex-direction: column; */
+  }
+
+main {
+  flex: 1 0 auto;
+}
+
+.uploaderYOBA2000 {
+  border:20px solid red;
+  background: orchid;
+  width: 300px;
+  height: 70%;
+  position: relative;
+  align-self: auto;
+}
+.menuContainer {
+  width: 64px;
+  height: 64px;
+  margin: 5px;
+  border: solid;
+  border-width: 3px;
+  border-color: white;
+}
+
+.menuElementSelected {
+  border: solid;
+  border-width: 3px;    
+  border-color: yellowgreen;    
+}
+
+.mainSVGContainer{
+  position: absolute;
+  top: 150px;
+  left: 300px;
+  width: 75%;
+  height: 75%;
+}
+.mainSVG{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+.drawnObject{
+  cursor: move;
+}
+
+.drawnNode{
+  cursor: pointer;
+}
+
+.rightClickMenu{
+  position: absolute;
+  z-index: 10;
+  width: 400px;
+  height: 300px;
+  background: rgb(216, 238, 171);
+}
+
+/*.controllers{
+  position: relative;
+  left: 50px;
+  bottom: 30px;
+  border-collapse: collapse; 
+  width: 300px; 
+}
+.controllersTH { 
+  background: #fc0; 
+  text-align: left; 
+  }
+.controllersTD {
+  background: #fff; 
+  text-align: center; 
+  }
+.controllersTR {
+  border: 1px solid black; 
+  padding: 4px; 
+  }*/
+
+
+
+#okno {
+  width: 400px;
+  /* height: auto; */
+  /* text-align: center; */
+  padding: 15px;
+  border: 3px solid #0000cc;
+  border-radius: 10px;
+  color: #0000cc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* margin: auto; */
+  /* white-space: nowrap; */
+  background: #fff;
+  z-index: 10;
+  display: none;
+  /* overflow: auto; */
+}
+#oknoTablePlot {
+  width: 90%;
+  height: 50%;
+  text-align: center;
+  padding: 15px;
+  border: 3px solid #0000cc;
+  border-radius: 10px;
+  color: #0000cc;
+  position: absolute;
+  top: 90;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background: #fff;
+  z-index: 100;
+  display: none;
+}
+#okno.target {
+  display: block;
+}
+
+.outputTable{
+  position: absolute;
+  resize: both;
+  overflow: auto;
+  top: 150px;
+  left: 300px;
+  width: 800px;
+  height: 800px;
+}
+
+.outputPlot{
+  position: absolute;
+  resize: both;
+  overflow: auto;
+  top: 150px;
+  left: 1100px;
+  width: 800px;
+  height: 800px;
+}
+.classPropertyOkno div{
+  
+  padding: 1em;
+}
+.classPropertyOkno input{
+  position: absolute;
+  /* margin-left: 5em; */
+}
+.classPropertyOkno label{
+  display: inline-block;
+  padding: 0px 3px 0px 0px;
+  width: 50px;
+  text-align: right;
+  /* margin-top: 10em;
+  margin-bottom: 10em;
+  padding: 3em; */
+}
+.closeOkno {
+  display: inline-block;
+  border: 1px solid #0000cc;
+  color: #0000cc;
+  padding: 0 12px;
+  margin: 10px;
+  text-decoration: none;
+  background: #f2f2f2;
+  font-size: 14pt;
+  cursor:pointer;
+}
+.closeOkno:hover {background: #e6e6ff;}
+
+.sideMenu {
+  left: 0px;
+  top: 10px;
+  width: 245px;
+  bottom: 38px;
+  border-top: 2px solid #489e9e5d;
+}
+.leftSideMenu {
+  border-right: 2px solid #489e9e5d;
+}
+.rightSideMenu {
+  border-left: 2px solid #489e9e5d;
+}
+.sideMenu .element {
+  padding: 12px 0px 12px 18px;
+  border-bottom: 2px solid #489e9e5d;
+}
+
+.menuEditItem {
+  width: 14px;
+  height: 14px;
+  padding: 6px 6px 6px 6px;
+  text-decoration: none;
+}
+
+.menuEditItem:hover {
+  background-color: aqua;
+  cursor: pointer;
+}

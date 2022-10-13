@@ -1,0 +1,147 @@
+<body>
+
+<!-- <div class="uploaderYOBA2000">
+  <p>lineConnect</p>
+  <input type="radio" id="peka1" name="lineConnect" style="cursor:pointer" checked=true onclick="lineConnectTrue()" />
+    true
+  <input type="radio" id="peka2" name="lineConnect" onclick="lineConnectFalse()"/>
+  false
+</div> -->
+
+<div class="menu">
+  <div id="objectPickMenu"></div> 
+  <div id="objectPickMenu2"></div>
+</div>
+<div class="menu">
+  <!-- <button onclick="openMenu(document.getElementById('mainSVGContainer'), {x:300,y:500})">debug</button> -->
+  <button onclick="deleteAllTest()">DeleteAll</button>
+  <button onclick="listAllObjects()">debug</button>
+  <button onclick="listAllGrafs()">grafs</button>
+  <button onclick="showDate()">showDate</button>
+  <input type="file" onchange="loadDateJSON(this)">
+  <button onclick="objectKeeper.history.console()">historyconsoel</button>
+  <button onclick="objectKeeper.history.addHistory()">addHistory</button>
+  <!-- <button onclick="propertyMenu.targetOkno()">OKNO</button> -->
+</div>
+<!-- //------------------------------------ -->
+<div class="menu" style="margin-top: 30px;">
+  <input type="file" id="file_selector">
+  <input type="button" id="parse_file_btn" value="start">
+  
+  <input type="number" id="input1" name="dt" value="0.000001">
+  <label for="input1">dt</label>
+  <input type="number" id="input2" name="N" value="1000">
+  <label for="input2">N</label>
+
+  
+  <select size="12" name="dataType" id="dataTypeSelector">
+      <option value="U">Напряжение, В</option>
+      <option selected value="I">Ток, А</option>
+      <option value="UR">Напряж. актив., В</option>
+      <option value="UL">Напряж. индуктив., В</option>
+      <option value="UC">Напряж. ёмк., В</option>
+      <option value="EDS">ЭДС, В</option>
+      <option value="U_o">Напряжение исх., В</option>
+      <option value="I_o">Ток исх., А</option>
+      <option value="UC_o">Напряж. исх. ёмк., В</option>
+      <option value="dUdt">Произв. напряжен., В/с</option>
+      <option value="EDS_0">ЭДС исх., В</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="R">Актив. сопр., Ом</option>
+  </select>
+  <input type="button" id="calcData_btn" value="Show table">
+  <input type="button" id="calcUI_btn" value="Show UI">
+  <select multiple size="0" name="edgeSelector" id="edgeSelector"></select>
+  <input type="button" id="calcData_btn1" value="Show">
+  
+</div>
+<div class="outputTable">
+  <table id="output_table"></table>
+</div>
+
+<div class="outputPlot" id="output_plot"></div>
+<!-- /,lk;lkl -->
+
+<div class="okno" id="oknoTablePlot">
+  <div class = "ewr" id="wss">
+    TablePlot
+  </div>
+</div>
+
+<div class="okno" id="okno">
+    <div class = "classPropertyOkno" id="propertyOkno">
+      фывфывфыв
+    </div>
+    <button onclick="propertyMenu.closeOkno()" class="closeOkno">Закрыть окно</a>
+</div>
+
+
+
+
+
+<!--<table id="controllers">
+	
+   <tr class="controllersTR">
+   	<th class="controllersTH">Заголовок 1</th>
+   	<td class="controllersTD">Ячейка 1</td>
+   	<td>Ячейка 2</td>
+   </tr>
+   <tr class="controllersTR">
+   	<th class="controllersTH">Заголовок 1</th>
+   	<td class="controllersTD">Ячейка 1</td>
+   	<td>Ячейка 2</td>
+   </tr>
+  
+</table> -->
+
+<nav class="context-menu">
+  <ul class="context-menu__items">
+    <li class="context-menu__item">
+      <a class = "context-menu__link" id="context-menu_edit">
+        <i class="fa fa-edit"></i>Edit Item
+      </a>
+    </li>
+    <li class="context-menu__item">
+      <a class = "context-menu__link" id="context-menu_a1">
+        <i class="fa"></i>rotate 90
+      </a>
+    </li>
+    <li class="context-menu__item">
+      <a class = "context-menu__link" id="context-menu_a2">
+        <i class="fa"></i>rotate -90
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <img id="svgStock" class="inject-me " src="/src/Front/Images/Background.svg" 
+  style="width:0px; height:0px; padding: 0px; margin: 0px; border: 0px;">
+
+<script src="/src/Front/includes/svg-injector.min.js"></script>
+<script src="/src/Front/functions.js"></script>
+
+<script type = "text/javascript" src = "/src/Front/ObjectLib.js"></script>
+<script type = "text/javascript" src = "/src/Front/NodeLib.js"></script>
+<script type = "text/javascript" src = "/src/Front/LineLib.js"></script>
+<script type = "text/javascript" src = "/src/Front/ElectricObjects.js"></script>
+<script src = "/src/Front/electricObjects.json"></script>
+<script type = "text/javascript" src = "/src/Front/staticObjects.js"></script>
+<script type = "text/javascript" src = "/src/Front/menus.js"></script>
+<script type = "text/javascript" src = "/src/Front/rightClickMenu.js"></script>
+
+<script type = "text/javascript" src = "/src/Front/index.js"></script>
+<script type = "text/javascript" src = "/src/Front/controls.js"></script>
+
+<script type = "text/javascript" src = "/src/ElectricCalc/Math.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/Plotly.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/graph.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/uzel.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/rebro.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/solver.js"></script>    
+<script type = "text/javascript" src = "/src/ElectricCalc/index.js"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/iterator.js"></script>
+<!-- <script type = "text/javascript" src = "/src/ElectricCalc/2DGraphic.js"></script> --> 
+
+
+</body>

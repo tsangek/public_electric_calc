@@ -1,0 +1,142 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body * {
+  color: #595959;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  }
+
+  .uploaderYOBA2000 {
+    border:20px solid red;
+    background: orchid;
+    width: 300px;
+    height: 70%;
+    position: relative;
+    align-self: auto;
+  }
+  .menuContainer {
+    width: 64px;
+    height: 64px;
+    margin: 5px;
+    border: solid;
+    border-width: 3px;
+    border-color: white;
+  }
+  .menu {
+    max-width: 300px;
+    max-height:300px;
+    padding: 5px;
+    /* display:block;  */
+    /* overflow: auto; */
+  }
+  .menuElementSelected {
+    border: solid;
+    border-width: 3px;    
+    border-color: yellowgreen;    
+  }
+
+  .outputTable{
+    position: absolute;
+    resize: both;
+    overflow: auto;
+    top: 50px;
+    left: 400px;
+    width: 1200px;
+    height: 400px;
+  }
+
+  .outputPlot{
+    position: absolute;
+    resize: both;
+    overflow: auto;
+    top: 450px;
+    left: 400px;
+    width: 800px;
+    height: 800px;
+  }
+  .drawnObject{
+    cursor: move;
+  }
+
+  .drawnNode{
+    cursor: pointer;
+  }
+
+  .rightClickMenu{
+    position: absolute;
+    z-index: 10;
+    width: 400px;
+    height: 300px;
+    background: rgb(216, 238, 171);
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  .tableHeader {
+    background-color: #faf899;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 3px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+
+   #zatemnenie {
+    background: rgba(102, 102, 102, 0.5);
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+  #okno {
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid #0000cc;
+    border-radius: 10px;
+    color: #0000cc;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+    z-index: 100;
+    display: none;
+  }
+  #okno.target {display: block;}
+  .closeOkno {
+    display: inline-block;
+    border: 1px solid #0000cc;
+    color: #0000cc;
+    padding: 0 12px;
+    margin: 10px;
+    text-decoration: none;
+    background: #f2f2f2;
+    font-size: 14pt;
+    cursor:pointer;
+  }
+  .closeOkno:hover {background: #e6e6ff;}
