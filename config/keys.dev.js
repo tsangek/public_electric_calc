@@ -2,7 +2,7 @@ module.exports.config = {
     host: "localhost",
     user: "angek",
     database: "test",
-    password: "dvwtpywr1",
+    password: "ssrtikk21ll",
     connectionLimit: 10,
     supportBigNumbers: true
 }
