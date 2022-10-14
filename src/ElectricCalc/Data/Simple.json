@@ -1,0 +1,32 @@
+[
+  {
+    "in": 0,
+	"out": 1,
+	"type": "VoltageSourceSin",
+    "R": 100,
+	"L": 0.00115,
+	"edsEff": 2000,
+	"freq": 1000,
+	"phase": 0
+  },
+    {
+    "in": 0,
+	"out": 1,
+	"type": "VoltageSourceSin",
+    "R": 100,
+	"L": 0.00115,
+	"edsEff": 2000,
+	"freq": 1000,
+	"phase": 120
+  },
+    {
+    "in": 0,
+	"out": 1,
+	"type": "VoltageSourceSin",
+    "R": 100,
+	"L": 0.00115,
+	"edsEff": 2000,
+	"freq": 1000,
+	"phase": 240
+  }  
+]

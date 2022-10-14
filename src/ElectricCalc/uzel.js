@@ -1,6 +1,6 @@
 class GraphNode {
     constructor(graphNodes,nodeNum){
-        this.graphNodes = graphNodes;
+        // this.graphNodes = graphNodes;
         
         this.neighborNodesNums = [];
         this.neighborEdgesNums = [];
@@ -11,6 +11,23 @@ class GraphNode {
         this.vectorA;
         this.B;
     }
+
+    // addNeighborEdgeAndNodes(graphEdge, currentNodes) { //is_entrance - ?надо решить, как обойтись без этого
+    //     for (let i = 0; i < currentNodes.length; i++){
+    //         if(this.nodeNum != currentNodes[i].nodeNum){
+    //             if (!this.neighborNodesNums.includes(currentNodes[i].nodeNum)){
+    //                 this.neighborNodesNums.push(currentNodes[i].nodeNum);
+    //                 if (i==0) this.neighborEdgeIsEntrance.push(1);
+    //                 else this.neighborEdgeIsEntrance.push(-1)
+    //             }
+    //         }
+    //     }
+    //     if (!this.neighborEdgesNums.includes(graphEdge.edgeNum)){
+    //         this.neighborEdgesNums.push(graphEdge.edgeNum);
+    //     }
+        
+    //     this.nodeRank++; 
+    // }
     //-----------------------------------------------------------------------------
     addEdge(graphEdge, is_entrance) {
         if (is_entrance) {

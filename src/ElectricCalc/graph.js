@@ -2,10 +2,25 @@ class Graph {
     constructor(jsonArr){
         this.graphEdges = [];
         this.graphNodes = []; 
-        
+        //[название в считываемом файле] : [название класса элемента]
+        this.edgeTypeClass = {
+            RLC : RLC, 
+            Diode : Diode, 
+            VoltageSourceSin : VoltageSourceSin,
+            Transformer : Transformer,
+            Generator: Generator
+        };
+        this.edgeCounter = 0;
+        let classItem;
         for(let i = 0; i < jsonArr.length; i++) {
-            this.graphEdges.push(new GraphEdge(jsonArr[i],i,this.graphNodes));        
+            classItem = new this.edgeTypeClass[jsonArr[i].type](jsonArr[i],this.edgeCounter,this.graphNodes);
+            classItem.pushEdgesTo(this.graphEdges);
+            this.edgeCounter= this.edgeCounter + classItem.numEdges;
+                  
         }
+        // for(let i = 0; i < jsonArr.length; i++) {
+        //     this.graphEdges.push(new this.edgeTypeClass[jsonArr[i].type](jsonArr[i],i,this.graphNodes));        
+        // }
 
         this.graphNodes.forEach(GraphNode => {
             GraphNode.calculateVectorAB(this.graphEdges);
@@ -258,5 +273,7 @@ class Graph {
             this.findJointNodes(nodeNeighborNum, pr_nodesVisited, edgeConnectorNum);
             }     //конец перебор по соседним рёбрам
     }  //конец findJointNodes
+
+    //_________________________________________________________________________________
 }
 

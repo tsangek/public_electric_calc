@@ -1,0 +1,87 @@
+[
+  {
+    "model": "capacitor",
+    "type": "C",
+    "pos": {
+      "x": 3000,
+      "y": 1800
+    },
+    "electricParameters": {
+      "C": 20,
+      "D": false,
+      "E": 0
+    },
+    "in": 0,
+    "out": 1
+  },
+  {
+    "model": "resistor",
+    "type": "R",
+    "pos": {
+      "x": -2700,
+      "y": 1800
+    },
+    "electricParameters": {
+      "R": 4580,
+      "D": false,
+      "E": 0
+    },
+    "in": 1,
+    "out": 0
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -4650,
+      "y": -2700
+    },
+    "point2": {
+      "x": -4650,
+      "y": 1800
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -3000,
+      "y": 1800
+    },
+    "point2": {
+      "x": -4650,
+      "y": 1800
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -2400,
+      "y": 1800
+    },
+    "point2": {
+      "x": 2700,
+      "y": 1800
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": 3300,
+      "y": -2700
+    },
+    "point2": {
+      "x": 3300,
+      "y": 1800
+    }
+  },
+  {
+    "type": "line",
+    "point1": {
+      "x": -4650,
+      "y": -2700
+    },
+    "point2": {
+      "x": 3300,
+      "y": -2700
+    }
+  }
+]

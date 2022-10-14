@@ -1,0 +1,33 @@
+[
+  {
+  "in": 0,
+	"out": 1,
+	"type": "VoltageSourceSin",
+  "R": 0.0000001,
+	"edsEff": 2000,
+	"freq": 1000,
+	"phase": 0
+  },
+  {
+  "trans1":{
+		"in": 0,
+		"out": 1
+	},
+  "trans2":{
+    "in": 2,
+		"out": 3
+	},
+	"type": "Generator",
+  "M": 0.00460,
+	"m": 0.00115
+  },
+	{
+	"in": 2,
+	"out":3,
+	"type": "RLC",
+	"R": 4580,
+	"D": false,
+	"E": 0
+  }
+  
+]

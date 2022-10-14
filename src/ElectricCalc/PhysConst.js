@@ -1,0 +1,4 @@
+PhysConst = {
+    BOLTZMAN : 1.380649E-23,
+    ELEMCHARGE : 1.602176634E-19
+}

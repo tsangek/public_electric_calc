@@ -3,8 +3,7 @@
     "in": 0,
 	"out": 1,
 	"type": "VoltageSourceSin",
-    "R": 0.21,
-	"L": 0.00115,
+    "R": 0.000001,
 	"edsEff": 2000,
 	"freq": 1000,
 	"phase": 0
@@ -13,8 +12,7 @@
     "in": 0,
 	"out": 2,
 	"type": "VoltageSourceSin",
-    "R": 0.21,
-	"L": 0.00115,
+    "R": 0.000001,
 	"edsEff": 2000,
 	"freq": 1000,
 	"phase": 120
@@ -23,24 +21,44 @@
     "in": 0,
 	"out": 3,
 	"type": "VoltageSourceSin",
-    "R": 0.21,
-	"L": 0.00115,
+    "R": 0.000001,
 	"edsEff": 2000,
 	"freq": 1000,
 	"phase": 240
   },
     {
     "in": 1,
+	"out": 6,
+	"type": "RLC",
+    "R": 0.21,
+	"L": 0.00115,
+  },
+    {
+    "in": 2,
+	"out": 7,
+	"type": "RLC",
+    "R": 0.21,
+	"L": 0.00115,
+  },
+    {
+    "in": 3,
+	"out": 8,
+	"type": "RLC",
+    "R": 0.21,
+	"L": 0.00115,
+  },
+    {
+    "in": 6,
 	"out": 4,
 	"type": "Diode"
   },
     {
-    "in": 2,
+    "in": 7,
 	"out": 4,
 	"type": "Diode"
   },
       {
-    "in": 3,
+    "in": 8,
 	"out": 4,
 	"type": "Diode"
   },

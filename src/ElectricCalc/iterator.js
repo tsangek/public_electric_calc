@@ -1,156 +1,75 @@
 //---------------------------------------------------------------------------
+var flagDebug = false;
+var flagIni = true;
+var writeCounter;
+var iterCounter;
 var calcDataByTimesteps = [];
+var writeCounterAllTest;
+var DEBUG_EIGEN_NORM = 0;
 function main()
 {
-	let count = 0;
+	flagDebug = false;
+	flagIni = true;
+	writeCounter = 0;
+	iterCounter = 0;
+	writeCounterAllTest=0;
 	let t = 0;
-	let phase0 = 0;
+	writeCalcResaults();
+	var timeStart = Date.now();
+	var timeEnd;
+	//dt = 1e-25;
 	//——————————————————————————————————————————————————————————————————————————————
 	//Основной цикл по времени
 	//——————————————————————————————————————————————————————————————————————————————
-	
-
-	while(count < numberOfTimesteps)       //цикл по времени (ограничение по кол-ву шагов)
-	{
-
-		//--------------------------
-		//Эмуляция работы генератора - три симметричные фазы
-		//Class_Rebro[0]->EDS_nonst = (double)-220.0;
-
-		//Class_Rebro[0]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0))*220*1.41)/1.0;
-		GraphObj.graphEdges[0].eds = Math.sin(2*Math.PI*(1000.0*t+phase0))*2000*1.41/2.0;
-		GraphObj.graphEdges[1].eds = Math.sin(2*Math.PI*(1000.0*t+phase0 + 1/3))*2000*1.41/2.0;
-		GraphObj.graphEdges[2].eds = Math.sin(2*Math.PI*(1000.0*t+phase0 + 2/3))*2000*1.41/2.0; 
-		//Class_Rebro[1]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0+1.0/3.0))*2000*1.41);
-		//Class_Rebro[2]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0+2.0/3.0))*2000*1.41);
-
-		//Class_Rebro[0]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0))*2000*1.41)/2.0;
-		//Class_Rebro[1]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0+1.0/3.0))*2000*1.41)/2.0;
-		//Class_Rebro[2]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0+2.0/3.0))*2000*1.41)/2.0;
-		//Class_Rebro[3]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0))*2000*1.41)/2.0;
-		//Class_Rebro[4]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0+1.0/3.0))*2000*1.41)/2.0;
-		//Class_Rebro[5]->EDS_nonst = (double)(sin(2*PI*(1000.0*t+faza0+2.0/3.0))*2000*1.41)/2.0;
-
-		//——————————————————————————————————————————————————————————————————————————————
-		////Программа запуска
-		//if (fabs(t-0.01) < 1.0e-12)
-		//{
-		//dt_mks = dt_mks/1000.0;
-		//}
-		////--------------------------
-		////размыкание ключа на нагрузке - увеличение сопротивления на ребра за 50 шагов
-		//if (t>0.01 && count1 < 1000)     //начать замыкание, при t>0.01с с начала эксперимента
-		//{
-		//
-		//	//увеличение сопротивления нагрузки в 1,1 раза 50 раз - один раз в шаг
-		//	//(при dt = 1 мкс размыкание происходит за 50 мкс)
-		//	Class_Rebro[18]->R_rebra_nonst = 575.0+100.0*(count1+1);
-		//	count1++;                 //инкримент счётчика размыкания - считает 50 раз
-		//
-		//}
-
-		//if (fabs(t-0.010002) < 1.0e-12)
-		//{
-		//dt_mks = dt_mks*1000.0;
-		//}
-		////
-
-		//if (fabs(t-0.0043) < 1.0e-12)
-		//{
-		//dt_mks = dt_mks/1000.0;
-		//Class_Rebro[10]->R_rebra_ini = 0.001;
-		//}
-		//
-		//if (fabs(t-0.004302) < 1.0e-12)
-		//{
-		//dt_mks = dt_mks*1000.0;
-		//}
-
-
-		//——————————————————————————————————————————————————————————————————————————————
-		//Поиск замкнутых контуров и составление матрицы СЛАУ Кирхгофа и её решение
-		//——————————————————————————————————————————————————————————————————————————————
-		//--------------------------
-		GraphObj.graphEdges.forEach(edge => {
-			edge.r = edge.r_ini;
-		});
-		//--------------------------
-
-		//расчёт коефициентов A и B. Считается, что каждое ребро при dt->0 обладает
-		//линейной зависимостью напряжения и тока: U = A*I + B
-		GraphObj.graphEdges.forEach(edge => {
-			edge.calculateAB(dt);
-		});
-
-		//--------------------------
-		//Создание и решение матрицы СЛАУ Кирхгофа
-		SolverObj.newIteration();
-
-		//--------------------------
-		//проверка правильности состояния диодов
-		let pr_diode_wrong;
-		pr_diode_wrong = true;      //изначально диоды считаются неправильными для входа в цикл
-
-		//цикл пока все не станут правильными или не будет достигнут максимум итераций (10)
-		for (let k = 0; k < 100 && pr_diode_wrong; k++)
+	try{
+		while(writeCounter < numberOfTimesteps)       //цикл по времени (ограничение по кол-ву шагов)
 		{
-			//Отключение диодов происходит по очереди, начиная с самого "худшего",
-			//т.е. с максимально отрицательным током
-			let I_min = 0.0; 		//инициализация переменной максимально отрицательного тока
-			let I_min_num = -1;             //номер ребра с максимально отрицательным током
-			pr_diode_wrong = false;      //диоды считаются правильными до полной проверки
-			for (let i = 0; i < GraphObj.edgesCount; i++)          //перебор по всем рёбрам
-			{
-				//если ребро диод и ток по нему отрицательный, то заходим
-				if(SolverObj.X[i] < -1.0e-4 && GraphObj.graphEdges[i].pr_d)
-				{
-					//ток по нему меньше, чем прежде записанный максимально отрицательный, то заходим
-					if(SolverObj.X[i] < I_min)
-					{
-						I_min = SolverObj.X[i];   //запись нового максимально отрицательного тока
-						I_min_num = i;         //запись номера ребра нового максимально отрицательного тока
-					}
-					pr_diode_wrong = true;      //Были диоды с отрицательным током - нужно отключить самый отрицательный
-				}
+			
+			flagDebug = false;
+			if(writeCounter === 416) {
+				flagDebug = true;
 			}
 
-			//--------------------------
-			//Если "неправильных" диодов небыло - выйти и перейти к записи результатов
-			if(!pr_diode_wrong) break;
-
-			//--------------------------
-			GraphObj.graphEdges[I_min_num].r = 100000000.0;   //отключение самого "худшего" диода
 			//——————————————————————————————————————————————————————————————————————————————
-			//расчёт коефициентов A и B. Считается, что каждое ребро при dt->0 обладает
-			//линейной зависимостью напряжения и тока: U = A*I + B
-			GraphObj.graphEdges[I_min_num].calculateAB(dt);
-			//--------------------------
-			//создание и решение СЛАУ Кирхгофа
-			SolverObj.newIteration();
-			//--------------------------
-			if (k==99) return 1;   //выход с ошибкой, если не нашёл нужной комбинации за 10 попыток
-		} // конец цикла поиска комбинаци диодов
-
-		//——————————————————————————————————————————————————————————————————————————————
-		//поиск новых значений напряжений и запись новых начальных данных для расчёта на
-		//следующем временном шаге (заряд конденсатора, ток через индуктивность, ...)
-		for (let i = 0; i < GraphObj.edgesCount; i++) {
-			GraphObj.graphEdges[i].newState(SolverObj.X[i]);				
+			//Поиск замкнутых контуров и составление матрицы СЛАУ Кирхгофа и её решение
+			//——————————————————————————————————————————————————————————————————————————————
+			//Создание и решение матрицы СЛАУ Кирхгофа
+			SolverObj.newIteration(dt,0);
+			
+			//writeCalcResaults();
+			//——————————————————————————————————————————————————————————————————————————————
+			t = t + dt;  //время нового времянного слоя
+			writeCounter++;     //инкримент количества временных шагов
+			if(writeCounter%1 === 0) console.log(writeCounter,iterCounter,writeCounterAllTest);
+			
 		}
-		writeCalcResaults(count);
-		//——————————————————————————————————————————————————————————————————————————————
-		t = t + dt;  //время нового времянного слоя
-		count++;     //инкримент количества временных шагов
+	} 
+	catch(errorID){
+		console.log(errorID);
 	}
-} //Конец програмы main
+	var timeEnd = Date.now();
+	console.log('end',writeCounter,writeCounterAllTest,(timeEnd-timeStart)+"ms");
+}//Конец програмы main
 
-function writeCalcResaults(count){
+	
+
+function writeCalcResaults(){
 	const dataVector = new Array(GraphObj.edgesCount);
 	for (let i = 0; i < GraphObj.edgesCount; i++) {
 		dataVector[i] = GraphObj.graphEdges[i].printData();				
+	}	
+	calcDataByTimesteps.push(dataVector);
+}
+
+
+function writeDebugCalcResaults(count){
+	const dataVector = new Array(GraphObj.edgesCount+1);
+	dataVector[0] = count;
+	for (let i = 1; i < GraphObj.edgesCount+1; i++) {
+		dataVector[i] = GraphObj.graphEdges[i-1].printData();				
 	}
 	
-	calcDataByTimesteps[count] = dataVector;
+	calcDataByTimesteps.push(dataVector);
 }
 
 

@@ -169,6 +169,7 @@ function giveInfoToComputation(){
     const json = jsonForComputation(listObjects);
     // const blabla = JSON.stringify(json, null,2);
     // console.log(blabla);
+    console.log(json);
     startCalc(json);
 }
 //приведение данных для решения решальщика
