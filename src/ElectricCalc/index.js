@@ -1,4 +1,4 @@
-
+console.log("start index.js");
 var reader = new FileReader();
 
 var table = document.getElementById('output_table');
@@ -17,7 +17,7 @@ var selectedEdges = [];
 var fileUploaded;
 const fileSelector = document.getElementById('file_selector');
 fileSelector.addEventListener('change', (event) => {
-    fileUploaded = event.target.files[0];
+fileUploaded = event.target.files[0];
 });
 //----------------------------------------------------------------
 const parseBtn = document.getElementById('parse_file_btn');
@@ -35,12 +35,10 @@ dataTypeSelector.addEventListener('change', (event) => {
 
 //----------------------------------------------------------------
 const edgeSelector = document.getElementById('edgeSelector');
+console.log("edgeSelector",edgeSelector);
 edgeSelector.addEventListener('change', (event) => {
-    // selectedEdges = getSelectValues(edgeSelector);
-    // console.log("selectedEdges",selectedEdges);
-    var instance1 = M.FormSelect.getInstance(edgeSelector);
-    selectedEdges = instance1.getSelectedValues();
-    // selectedEdges = M.FormSelect.getInstance(edgeSelector);
+    selectedEdges = getSelectValues(edgeSelector);
+    console.log("selectedEdges",selectedEdges);
 });
 //----------------------------------------------------------------
 const showBtn = document.getElementById('calcData_btn');
@@ -59,14 +57,16 @@ showBtn2.addEventListener('click', (event) => {
 const showBtn1 = document.getElementById('calcData_btn1');
 
 showBtn1.addEventListener('click', (event) => {
-    // var instance1 = M.FormSelect.getInstance(edgeSelector);
-    // selectedEdges = instance1.getSelectedValues();
-    var instance2 = M.FormSelect.getInstance(dataTypeSelector);
-    selectedDataTypeOption = instance2.getSelectedValues()
-    
-
-    make2DPlot(selectedDataTypeOption,selectedEdges);
+    make2DPlot(selectedDataTypeOption.value,selectedEdges);
 });
+
+// //----------------------------------------------------------------
+// const showBtn3 = document.getElementById('showDebug1');
+
+// showBtn3.addEventListener('click', (event) => {
+//     makeDebugTable(selectedDataTypeOption.value);
+// });
+
 
 //----------------------------------------------------------------
 const inputField1 = document.getElementById('input1');
@@ -77,8 +77,11 @@ inputField1.addEventListener('change', (event) => {
 
 //----------------------------------------------------------------
 const inputField2 = document.getElementById('input2');
+console.log("input2",inputField2.value);
 numberOfTimesteps = parseFloat(inputField2.value);
+console.log("input2Number",numberOfTimesteps);
 inputField2.addEventListener('change', (event) => {
+    console.log("input2",inputField2);
     numberOfTimesteps = parseFloat(inputField2.value);
 });
 
@@ -108,7 +111,7 @@ function loadDate(fileUploaded){
 // }
 //----------------------------------------------------------------
 function startCalc(json){
-    // console.log("startCalc",json);
+    calcDataByTimesteps = [];
     GraphObj = new Graph(json);
     SolverObj = new Solver(GraphObj);
     makeSelectEdges(GraphObj.graphEdges);
@@ -181,35 +184,38 @@ function makeSelectEdges(edges){
     while (edgeSelector.firstChild) {
         edgeSelector.removeChild(edgeSelector.firstChild);
     }
-    edgeSelector.append("size", edges.length);
+    console.log("edges:",edges);
+    edgeSelector.setAttribute("size",edges.length);
     for (let i = 0; i < edges.length; i++) {
         let tempOption = document.createElement("option");
         tempOption.setAttribute("value",i);
-        tempOption.innerHTML = edges[i].type + ' ' + edges[i].edgeNum;
+        tempOption.innerHTML = edges[i].typeRLC + ' ' + edges[i].edgeNum;
+        console.log("tempOption:",tempOption);
         edgeSelector.appendChild(tempOption);  
     }
-    updateSelectSelectors();
-}
-//----------------------------------------------------------------
-function updateSelectSelectors(){
-    var elems = document.querySelectorAll('select');
-    M.FormSelect.init(elems, {});
 }
 //----------------------------------------------------------------
 function make2DPlot(dataType,edgesNums){
     let tempEdgeData = new Array(edgesNums.length);
+    
     for (let i = 0; i < edgesNums.length; i++) {
         let tempVectorX = new Array(GraphObj.edgesCount);
         let tempVectorY = new Array(GraphObj.edgesCount);
         for (let j = 0; j < calcDataByTimesteps.length; j++) {
-        tempVectorY[j] = calcDataByTimesteps[j][Number(edgesNums[i])][dataType];
-        tempVectorX[j] = j*dt;             
+            tempVectorY[j] = calcDataByTimesteps[j][edgesNums[i]][dataType];
+            
+            if(j===0) {
+                tempVectorX[j] = 0;    
+            }
+            else {
+                tempVectorX[j] = tempVectorX[j-1] + calcDataByTimesteps[j][0]['dt']; 
+            }         
         }
     tempEdgeData[i] = ({
         x: tempVectorX,
         y: tempVectorY,
         mode: "lines",
-        name: GraphObj.graphEdges[Number(edgesNums[i])].type + ' ' + GraphObj.graphEdges[Number(edgesNums[i])].edgeNum
+        name: GraphObj.graphEdges[edgesNums[i]].typeRLC + ' ' + GraphObj.graphEdges[edgesNums[i]].edgeNum
         });
     }
     Plotly.newPlot("output_plot", tempEdgeData);
@@ -219,7 +225,7 @@ function makeUITable() {
     clearTable();
     let headerStringArr = [];
     for (let i = 0; i < GraphObj.edgesCount; i++) {
-        headerStringArr.push(GraphObj.graphEdges[i].type + ' ' + GraphObj.graphEdges[i].edgeNum);
+        headerStringArr.push(GraphObj.graphEdges[i].typeRLC + ' ' + GraphObj.graphEdges[i].edgeNum);
     }
     newTableLine(headerStringArr,true);
     
@@ -234,6 +240,26 @@ function makeUITable() {
         newTableLine(tempVector2,false); 
         newTableLine([],false);          
     }    
+}
+
+//----------------------------------------------------------------
+function makeDebugTable(dataType){
+    clearTable();
+    let headerStringArr = [];
+    headerStringArr.push("step #");
+    for (let i = 1; i < GraphObj.edgesCount+1; i++) {
+        headerStringArr.push(GraphObj.graphEdges[i-1].typeRLC + ' ' + GraphObj.graphEdges[i-1].edgeNum);
+    }
+    newTableLine(headerStringArr,true);
+    
+    let tempVector = new Array(GraphObj.edgesCount+1);
+    for (let i = 0; i < calcDataByTimesteps.length; i++) {
+        tempVector[0] = calcDataByTimesteps[i][0];
+        for (let j = 1; j < GraphObj.edgesCount+1; j++) {
+            tempVector[j] = calcDataByTimesteps[i][j][dataType];            
+        }
+        newTableLine(tempVector,false);        
+    }   
 }
 
 

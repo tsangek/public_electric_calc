@@ -21,6 +21,7 @@ function main()
 	//——————————————————————————————————————————————————————————————————————————————
 	//Основной цикл по времени
 	//——————————————————————————————————————————————————————————————————————————————
+	console.log("iteratorNumber",numberOfTimesteps);
 	try{
 		while(writeCounter < numberOfTimesteps)       //цикл по времени (ограничение по кол-ву шагов)
 		{
@@ -48,6 +49,7 @@ function main()
 		console.log(errorID);
 	}
 	var timeEnd = Date.now();
+	console.log('numbersteps',numberOfTimesteps);
 	console.log('end',writeCounter,writeCounterAllTest,(timeEnd-timeStart)+"ms");
 }//Конец програмы main
 
