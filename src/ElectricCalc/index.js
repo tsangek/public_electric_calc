@@ -35,6 +35,12 @@ dataTypeSelector.addEventListener('change', (event) => {
 
 //----------------------------------------------------------------
 const edgeSelector = document.getElementById('edgeSelector');
+
+// var elems = document.querySelectorAll('select');
+// var instances = M.FormSelect.init(elems, options);
+// console.log("elems",elems);
+// console.log("instances",instances);
+
 console.log("edgeSelector",edgeSelector);
 edgeSelector.addEventListener('change', (event) => {
     selectedEdges = getSelectValues(edgeSelector);
@@ -193,6 +199,9 @@ function makeSelectEdges(edges){
         console.log("tempOption:",tempOption);
         edgeSelector.appendChild(tempOption);  
     }
+    // M.AutoInit();
+    M.FormSelect.init(edgeSelector);
+    console.log("edgeSelector:",edgeSelector);
 }
 //----------------------------------------------------------------
 function make2DPlot(dataType,edgesNums){
