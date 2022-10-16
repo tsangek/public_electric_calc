@@ -43,3 +43,5 @@ app.use('/test', testRoutes);
 app.listen(port, () => {
   console.log(`Сервер начал прослушивать по адресу http://localhost:${port}/main`)
 })
+
+module.exports = app;
