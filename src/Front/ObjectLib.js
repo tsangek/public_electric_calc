@@ -469,6 +469,17 @@ class ObjectKeeper {
         this.rotateObjects(deg);
     }
 //--------------------------
+    userEditObjects(){
+        this.selectedMap.forEach(value =>{
+            if (value.type=="connector" || value.type=="line"){
+                
+            }
+            else {
+                addInfoToSideMenu(value);
+            }
+        });
+    }
+//--------------------------
 } //end of ObjectKeeper
 
 //----------------------------------------------------------
@@ -803,7 +814,7 @@ class ObjectConstant extends ObjectTemplate {
     }
     //--------------------------
     checkDirection(){
-        if(this.type == "R" || this.type == "C" || this.type == "LR"){ //костыль
+        if(this.type == "R" || this.type == "C" || this.type == "LR" || this.type == "VoltageSourceSin" || this.type == "Diode" || this.type == "RLC"){ //костыль
             switch(this.rotateGrad){
                 case 0: 
                     this.direction = "Horizontal Right";
@@ -892,6 +903,7 @@ class ObjectGeneric extends ObjectConstant {
    
     //--------------------------
     getSaveInfo(){
+        // console.log("getSaveInfo electricParameters",this.electricParameters);
         let buff = {
             "model": this.model,
             "type": this.type,

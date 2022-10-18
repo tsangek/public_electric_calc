@@ -17,6 +17,7 @@ var condesatorStaticObj;
             this.electricParameters = {};
             let buff = null;
             buff = this.findModelObj();
+            // console.log("finModelObj:",buff);
             this.type = buff.type;
             switch(buff.type){
                 case "line":
@@ -38,7 +39,29 @@ var condesatorStaticObj;
                     this.electricParameters.D = buff.D; //false
                     this.electricParameters.E = buff.E; //0
                     break;
-                case "D":
+                case "RLC":
+                    this.electricParameters.R = buff.R; //4580
+                    this.electricParameters.D = buff.D; //false
+                    this.electricParameters.E = buff.E; //0
+                    break;
+                case "Diode":
+                    this.electricParameters.R = buff.R; //4580
+                    this.electricParameters.D = buff.D; //false
+                    this.electricParameters.E = buff.E; //0
+                    break;
+                case "VoltageSourceSin":
+                    this.electricParameters.R = buff.R; //4580
+                    this.electricParameters.L = buff.L; //false
+                    this.electricParameters.edsEff = buff.edsEff; //false
+                    this.electricParameters.freq = buff.freq; //false
+                    this.electricParameters.phase = buff.phase; //false
+                    break;
+                case "elSource":
+                    this.electricParameters.R = buff.R; //4580
+                    this.electricParameters.L = buff.L; //false
+                    this.electricParameters.edsEff = buff.edsEff; //false
+                    this.electricParameters.freq = buff.freq; //false
+                    this.electricParameters.phase = buff.phase; //false
                     break;
                 default:
                     break;

@@ -16,7 +16,7 @@ const testRoutes = require('./routes/test')
 // const keys = require('./config/keys')
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 80;
 
 const hbs = expressHbs.create({
   layoutsDir: path.join(__dirname + "/views/layouts"),
@@ -32,7 +32,7 @@ app.use('/static', express.static(__dirname + '/public'));
 app.use('/src', express.static(__dirname + '/src'));
 // hbs.registerPartials(__dirname + "/views/partials");
 
-app.use('/', homeRoutes);
+app.use('/', mainRoutes);
 app.use('/main', mainRoutes);
 app.use('/contacts', contactsRoutes);
 app.use('/test', testRoutes);

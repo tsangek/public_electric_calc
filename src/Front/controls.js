@@ -93,13 +93,13 @@ SVGInjector(mySVGsToInject, null, function(){
     //adding menu elements
     pickMenu1.addElement('line',"lineStatic", menuLineClickCallback);
     pickMenu1.addElement('object',"resistor", menuDefaultClickCallback);
-    pickMenu1.addElement('object',"capacitor", menuDefaultClickCallback);
+    // pickMenu1.addElement('object',"capacitor", menuDefaultClickCallback);
     pickMenu1.addElement('object',"elSource", menuDefaultClickCallback);
     pickMenu1.addElement('object',"diode", menuDefaultClickCallback);
     
 
-    pickMenu2.addElement('object',"resistor", menuDefaultClickCallback);
-    pickMenu2.addElement('object',"capacitor", menuDefaultClickCallback);
+    // pickMenu2.addElement('object',"resistor", menuDefaultClickCallback);
+    // pickMenu2.addElement('object',"capacitor", menuDefaultClickCallback);
        
     svgDrawGroup.prepend(svgBack);
     //lineConnect = new LineObject;
@@ -107,7 +107,7 @@ SVGInjector(mySVGsToInject, null, function(){
     objectKeeper = new ObjectKeeper(svgDrawGroup, svgFile);
     
     lineKeeper = new LineObjectKeeper(objectKeeper);
-    propertyMenu = new PropertyKeeper(svgFile);  
+    // propertyMenu = new PropertyKeeper(svgFile);  
     createRightClickMenu();
     
 });

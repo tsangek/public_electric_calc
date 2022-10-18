@@ -171,7 +171,72 @@ function getPosition(e) {
       x: posx,
       y: posy
     }
-  }
+}
 
   //-------------------------------------------------------
-  
+function addInfoToSideMenu(value){
+    console.log("rightSideMenu1:",rightSideMenu1);
+    while (rightSideMenu1.firstChild) {
+        rightSideMenu1.removeChild(rightSideMenu1.firstChild);
+    }
+    let params = value.electricParameters;
+    console.log("valueSideMenu:",value);
+
+    let div = document.createElement("div");
+    let h6 = document.createElement("h6");
+    h6.setAttribute("class","left-align");
+    h6.innerHTML = value.id;
+    div.appendChild(h6);
+    rightSideMenu1.appendChild(div); 
+    // console.log("params:",typeof(params));
+    // rightSideMenu1.setAttribute("size",edges.length);
+    for (var elem in params){
+        // console.log("params0:",elem);
+        let div = document.createElement("div");
+        div.setAttribute("class","input-field col");
+
+        let input = document.createElement("input");
+        input.setAttribute("value",params[elem]);
+        input.setAttribute("id",elem);
+        input.setAttribute("type","text");
+        input.setAttribute("idElement",value.id);
+        // tempOption.innerHTML = edges[i].typeRLC + ' ' + edges[i].edgeNum;
+
+        let label = document.createElement("label");
+        label.innerHTML = elem;
+        label.setAttribute("for",elem);
+        // console.log("tempOption:",tempOption);
+        div.appendChild(input);
+        div.appendChild(label);
+        
+        rightSideMenu1.appendChild(div);  
+        input.onchange = function(evt) {
+                evt.preventDefault();
+                // Измените значение textContent на следующей строке
+                // message.textContent = email.value;
+                // document.getElementById("input-id").value;
+                // console.log("input.onsubmit");
+                // elem.tratata = "123";
+                let obj = objectKeeper.objectMap.get(input.getAttribute("idElement"));
+                let id = input.id;
+                let val = input.value;
+                console.log("inputObjДО", obj);
+                obj.electricParameters[id] = val
+                console.log("inputObjПОСЛЕ", obj);
+                console.log("input.value",input.value);
+                
+                // console.log(evt);
+              };
+    };
+    // rightSideMenu1.onsubmit = function(evt) {
+    //     evt.preventDefault();
+    //     // Измените значение textContent на следующей строке
+    //     // message.textContent = email.value;
+    //     console.log("rightSideMenu1.onsubmit");
+    //   };
+    // M.AutoInit();
+    M.updateTextFields();
+    // console.log("edgeSelector:",edgeSelector);
+
+    console.log("addInfoToSideMenu",value);
+}

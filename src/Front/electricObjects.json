@@ -6,7 +6,7 @@ var electricObjects = [
   },
   {
     "model": "resistor",
-    "type": "R",
+    "type": "RLC",
     
     "connectors": 2,
     "R": 4580,
@@ -23,7 +23,7 @@ var electricObjects = [
   },
   {
     "model": "diode",
-    "type": "R",
+    "type": "Diode",
     "connectors": 2,
     "R": 0.0005,
     "D": true,
@@ -31,12 +31,13 @@ var electricObjects = [
   },
   {
     "model": "elSource",
-    "type": "LR",
+    "type": "VoltageSourceSin",
     "connectors": 2,
     "R": 0.21,
     "L": 0.00115,
-    "D": false,
-    "E": 0
+    "edsEff": 2000,
+	  "freq": 1000,
+	  "phase": 0
   }
   
 ];

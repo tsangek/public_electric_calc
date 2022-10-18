@@ -35,13 +35,15 @@ dataTypeSelector.addEventListener('change', (event) => {
 
 //----------------------------------------------------------------
 const edgeSelector = document.getElementById('edgeSelector');
+const rightSideMenu1 = document.getElementById('rightSideMenu1');
+// console.log("rightSideMenu1",rightSideMenu1);
 
 // var elems = document.querySelectorAll('select');
 // var instances = M.FormSelect.init(elems, options);
 // console.log("elems",elems);
 // console.log("instances",instances);
 
-console.log("edgeSelector",edgeSelector);
+// console.log("edgeSelector",edgeSelector);
 edgeSelector.addEventListener('change', (event) => {
     selectedEdges = getSelectValues(edgeSelector);
     console.log("selectedEdges",selectedEdges);

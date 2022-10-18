@@ -41,7 +41,7 @@ function main()
 			//——————————————————————————————————————————————————————————————————————————————
 			t = t + dt;  //время нового времянного слоя
 			writeCounter++;     //инкримент количества временных шагов
-			if(writeCounter%1 === 0) console.log(writeCounter,iterCounter,writeCounterAllTest);
+			// if(writeCounter%1 === 0) console.log(writeCounter,iterCounter,writeCounterAllTest);
 			
 		}
 	} 

@@ -197,7 +197,8 @@ function rightClickMenuButtonDeselect(button){
 }
 
 function rightClickMenuFuncEdit(e){
-    propertyMenu.targetOkno(e);
+    // propertyMenu.targetOkno(e);
+    objectKeeper.userEditObjects();
     console.log("edit");
 }
 

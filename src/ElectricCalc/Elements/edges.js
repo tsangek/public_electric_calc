@@ -133,7 +133,6 @@ class edgeRK3LinearModel extends graphEdge{
 class edgeRLC extends edgeRK3LinearModel{
 	constructor(jsonObj, edgeNum, graphNodes){
 		super(jsonObj, edgeNum, graphNodes);
-		
 		this.r = jsonObj.R;
 		this.l = jsonObj.L;
 		this.c = jsonObj.C;
@@ -705,6 +704,7 @@ class edgeTransformer extends edgeRK3LinearModel{
 		else if(param ==2){
 			super(jsonObj.trans2, edgeNum, graphNodes);
 		}
+
 		this.L1 = jsonObj.L1;
 		this.L2 = jsonObj.L2;
 		// this.transM = jsonObj.m;

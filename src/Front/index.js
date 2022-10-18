@@ -166,16 +166,17 @@ function showDate(){
 //функция передачи схемы с окна рисовальщика к окну рещальщика 
 function giveInfoToComputation(){
     listObjects = copyAllObjects(objectKeeper);
+    // console.log('giveInfoToComputation->listObjects',listObjects);
     const json = jsonForComputation(listObjects);
     // const blabla = JSON.stringify(json, null,2);
     // console.log(blabla);
-    console.log(json);
+    // console.log('giveInfoToComputation->jsonForComputation',json);
     startCalc(json);
 }
 //приведение данных для решения решальщика
 function jsonForComputation(obj){
+    // console.log("jsonForComputation->obj:", obj);
     for(var val in obj){
-        
         if (obj[val]["type"] === "line"){
             delete obj[val];
         }
@@ -231,10 +232,12 @@ function copyAllObjects(objectKeeper){
     objectKeeper.objectMap.forEach(obj => {
         if (obj.type=="connector") return 0;
         else {
-            listObjects.push(obj.getSaveInfo());
+            let buff = obj.getSaveInfo()
+            listObjects.push(buff);
             return 1;
         }
     });
+    console.log("listObjects",listObjects);
     return listObjects;
 }
 
