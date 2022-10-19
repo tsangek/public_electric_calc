@@ -205,6 +205,7 @@ function jsonForComputation(obj){
 }
 
 function loadDateJSON(input){
+    // console.log("loadDateJSON.input",input);
     var file = input.files[0];
     let reader = new FileReader();
     objectKeeper.deleteAll();
@@ -215,6 +216,7 @@ function loadDateJSON(input){
 
     reader.onload = function() {
         let json = JSON.parse(reader.result);
+
        // const obj = JSON.parse(json);
        console.log(json);
        appendObjectsFromList(json)
@@ -260,4 +262,19 @@ function appendObjectsFromList(json){
     }
 } 
 
+function loadDateFile(file){
+    objectKeeper.deleteAll();
+    fetch('./Data/' + file)
+    .then(res => res.text())
+    .then(data => {
+        let json = JSON.parse(data);
+       // const obj = JSON.parse(json);
+       console.log(json);
+       appendObjectsFromList(json)
+    })
+    .catch(err => {
+        throw err;
+    });
+
+}
 

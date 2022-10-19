@@ -47,9 +47,13 @@
 
 <script type = "text/javascript" src = "/src/ElectricCalc/Elements/edges.js"></script>
 <script type = "text/javascript" src = "/src/ElectricCalc/Elements/elementsClasses.js"></script>
+
+<script type = "application/json" src = "/src/ElectricCalc/Data/scheme1.json"></script>
+<script type = "text/javascript" src = "/src/ElectricCalc/Data/test.js"></script>
 <script>   
     var el = document.querySelector('.tabs');
     var tabsInit = M.Tabs.init(el, {});
+    M.AutoInit();
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('select');
         var selectInstances = M.FormSelect.init(elems, {});

@@ -1,25 +1,42 @@
 <div id="drawPlot" class="section">
         <div class="row">
             <div class="col s2">
-                <div class="sideMenu leftSideMenu">
+                <div class="sideMenu leftSideMenu s2">
                     <div class="element">
                         <div id="objectPickMenu"></div> 
                         <div id="objectPickMenu2"></div>
                     </div>
-                    <div class="element">
-                        <!-- <button onclick="openMenu(document.getElementById('mainSVGContainer'), {x:300,y:500})">debug</button> -->
-                        <button onclick="deleteAllTest()">DeleteAll</button>
-                        <button onclick="listAllObjects()">debug</button>
-                        <button onclick="listAllGrafs()">построить Графы</button>
-                        <button onclick="showDate()">Сохранить в файл</button>
-                        <input type="button" id="giveInfoToComputationBtn" value="Начать вычисление">
-                        <input type="file" onchange="loadDateJSON(this)">
-                        <button onclick="objectKeeper.history.console()">historyConsole</button>
-                        <button onclick="objectKeeper.history.addHistory()">addHistory</button>
-                        <!-- <button onclick="propertyMenu.targetOkno()">OKNO</button> -->
-                    </div>
+                     <ul class="tabs grey darken-2">
+                        <li class="tab col s6"><a class="active white-text" style="padding:0 0px;" href="#guestMenu">GuestMenu</a></li>
+                        <li class="tab col s6"><a class="white-text" style="padding:0 0px;" href="#debugMenu">DebugMenu</a></li>
+                    </ul>
                 </div>
                 
+                <div class="col s12" style="border-bottom: 2px solid #489e9e5d;" id="guestMenu">
+                    <button onclick="listAllGrafs()">построить Графы</button>
+                    <button onclick="showDate()">Сохранить в файл</button>
+                    <input type="button" id="giveInfoToComputationBtn" value="Начать вычисление">
+                    <input type="file" onchange="loadDateJSON(this)">
+                </div>
+                <div class="col s12" style="border-bottom: 2px solid #489e9e5d;" id="debugMenu">
+                    <!-- <button onclick="openMenu(document.getElementById('mainSVGContainer'), {x:300,y:500})">debug</button> -->
+                    <button onclick="deleteAllTest()">DeleteAll</button>
+                    <button onclick="listAllObjects()">debug</button>
+                    <button onclick="listAllGrafs()">построить Графы</button>
+                    <button onclick="showDate()">Сохранить в файл</button>
+                    <input type="button" id="giveInfoToComputationBtn" value="Начать вычисление">
+                    <input type="file" onchange="loadDateJSON(this)">
+                    <button onclick="objectKeeper.history.console()">historyConsole</button>
+                    <button onclick="objectKeeper.history.addHistory()">addHistory</button>
+                    <!-- <button onclick="propertyMenu.targetOkno()">OKNO</button> -->
+                </div>
+
+                <div>
+                    <h6>Загрузить готовые схемы</h6>
+                    <button onclick="loadDateFile('scheme1.json')">Схема1</button>
+                </div>
+
+
             </div>
 
             <div id="mainSVGContainer" class="col s8">  <!-- mainSVGContainer -->
@@ -96,4 +113,6 @@
 
         <img id="svgStock" class="inject-me " src="/src/Front/Images/Background.svg" 
         style="width:0px; height:0px; padding: 0px; margin: 0px; border: 0px;">
+        
     </div>
+    

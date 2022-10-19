@@ -93,6 +93,9 @@ inputField2.addEventListener('change', (event) => {
     numberOfTimesteps = parseFloat(inputField2.value);
 });
 
+// var el = document.querySelector('.tabs');
+// var tabsInit = M.Tabs.init(el, {});
+
 //----------------------------------------------------------------
 function loadDate(fileUploaded){
     var file = fileUploaded;
