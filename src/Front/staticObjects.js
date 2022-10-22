@@ -45,9 +45,9 @@ var condesatorStaticObj;
                     this.electricParameters.E = buff.E; //0
                     break;
                 case "Diode":
-                    this.electricParameters.R = buff.R; //4580
-                    this.electricParameters.D = buff.D; //false
-                    this.electricParameters.E = buff.E; //0
+                    // this.electricParameters.R = buff.R; //4580
+                    // this.electricParameters.D = buff.D; //false
+                    // this.electricParameters.E = buff.E; //0
                     break;
                 case "VoltageSourceSin":
                     this.electricParameters.R = buff.R; //4580

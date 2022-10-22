@@ -166,7 +166,7 @@ function showDate(){
 //функция передачи схемы с окна рисовальщика к окну рещальщика 
 function giveInfoToComputation(){
     listObjects = copyAllObjects(objectKeeper);
-    // console.log('giveInfoToComputation->listObjects',listObjects);
+    console.log('giveInfoToComputation->listObjects',listObjects);
     const json = jsonForComputation(listObjects);
     // const blabla = JSON.stringify(json, null,2);
     // console.log(blabla);
@@ -176,32 +176,51 @@ function giveInfoToComputation(){
 //приведение данных для решения решальщика
 function jsonForComputation(obj){
     // console.log("jsonForComputation->obj:", obj);
-    for(var val in obj){
+    console.log("begin jsonForComputation");
+    let newObj = new Object();
+    let i = 0;
+    for(let val in obj){
         if (obj[val]["type"] === "line"){
-            delete obj[val];
+            // delete obj[val];
         }
         else if(obj[val].electricParameters){
-            delete obj[val].pos;
-            delete obj[val].model;
-            delete obj[val].rotateGrad;
+            console.log(obj[val]);
+            // delete obj[val].pos;
+            // delete obj[val].model;
+            // delete obj[val].rotateGrad;
+            let buff = new Object();
+            buff.type = obj[val].type;
+            buff.in = obj[val].in;
+            buff.out = obj[val].out;
             temp = obj[val]["electricParameters"];
-            for(var val2 in temp){
+            for(let val2 in temp){
                 let temp2 = {[val2] : temp[val2]};
-                obj[val][val2]=temp2[val2];
+                buff[val2]=temp2[val2];
             }
-            
-            delete obj[val].electricParameters
+            newObj[i] = buff;
+            i++;
+            // delete obj[val].electricParameters
         }
         
     }
-    //костыльище
-    for(let i = 0; i < obj.length; i++){
-        if(!obj[i]){
-            obj.length = i;
+    
+    if(!obj[i]){
+        newObj.length = i-1;
+    }
+    else{
+        newObj.length = i;
+    }
+    for(let val in obj){
+        if (obj[val]["type"] === "line"){
+            delete obj[val];
         }
     }
-    console.log("modified obj", obj);
-    return obj;
+    //костыльище
+    for(let i = 0; i < newObj.length; i++){
+        
+    }
+    console.log("modified obj", newObj);
+    return newObj;
 }
 
 function loadDateJSON(input){
@@ -262,9 +281,9 @@ function appendObjectsFromList(json){
     }
 } 
 
-function loadDateFile(file){
+function loadDateFile(name){
     objectKeeper.deleteAll();
-    fetch('./Data/' + file)
+    fetch('./Data/' + name)
     .then(res => res.text())
     .then(data => {
         let json = JSON.parse(data);

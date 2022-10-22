@@ -24,10 +24,7 @@ var electricObjects = [
   {
     "model": "diode",
     "type": "Diode",
-    "connectors": 2,
-    "R": 0.0005,
-    "D": true,
-    "E": -0.2
+    "connectors": 2
   },
   {
     "model": "elSource",

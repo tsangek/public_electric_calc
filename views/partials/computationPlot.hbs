@@ -5,11 +5,12 @@
                 {{!-- <div class="leftMenu" style="margin-top: 30px;"> --}}
                 <input type="file" id="file_selector">
                 <input type="button" id="parse_file_btn" value="start">
-                
-                <input type="number" id="input1" name="dt" value="0.000002">
+                <p></p>
                 <label for="input1">dt</label>
-                <input type="number" id="input2" name="N" value="1000">
+                <input type="number" id="input1" name="dt" value="0.000001">
                 <label for="input2">N</label>
+                <input type="number" id="input2" name="N" value="1000">
+                
 
                 <p></p>
                 <div class="input-field col s12">
@@ -29,21 +30,24 @@
                         <option value="B">B</option>
                         <option value="R">Актив. сопр., Ом</option>
                     </select>
+                    <label>Выбор исследуемых величин</label>
                 </div>
                 <p></p>
                 <input type="button" id="calcData_btn" value="Show table">
                 <input type="button" id="calcUI_btn" value="Show UI">
                 <div class="input-field col s12">
                     <select multiple size="0" name="edgeSelector" id="edgeSelector"></select>
+                    <label>Выбор ребер</label>
                 </div>
-                <input type="button" id="calcData_btn1" value="Show">
+                <input type="button" id="calcData_btn1" value="Показать график">
                 
                 </div>
+                <div class="outputPlot" id="output_plot"></div> 
                 <div class="outputTable">
                     <table id="output_table"></table>
                 </div>
 
-                <div class="outputPlot" id="output_plot"></div>    
+                   
             </div>
         </div>
     </div>

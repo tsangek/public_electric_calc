@@ -122,6 +122,7 @@ function loadDate(fileUploaded){
 // }
 //----------------------------------------------------------------
 function startCalc(json){
+    console.log("starCalc.json->",json);
     calcDataByTimesteps = [];
     GraphObj = new Graph(json);
     SolverObj = new Solver(GraphObj);
@@ -163,7 +164,7 @@ function makeTable(dataType){
     clearTable();
     let headerStringArr = [];
     for (let i = 0; i < GraphObj.edgesCount; i++) {
-        headerStringArr.push(GraphObj.graphEdges[i].type + ' ' + GraphObj.graphEdges[i].edgeNum);
+        headerStringArr.push(GraphObj.graphEdges[i].__proto__.constructor.name + ' ' + GraphObj.graphEdges[i].edgeNum);
     }
     newTableLine(headerStringArr,true);
     
@@ -200,8 +201,9 @@ function makeSelectEdges(edges){
     for (let i = 0; i < edges.length; i++) {
         let tempOption = document.createElement("option");
         tempOption.setAttribute("value",i);
-        tempOption.innerHTML = edges[i].typeRLC + ' ' + edges[i].edgeNum;
-        console.log("tempOption:",tempOption);
+        tempOption.innerHTML = edges[i].__proto__.constructor.name + ' ' + edges[i].edgeNum;
+        console.log("tempOption:",edges[i].__proto__);
+        // console.log("tempOption:",tempOption);
         edgeSelector.appendChild(tempOption);  
     }
     // M.AutoInit();
@@ -229,7 +231,7 @@ function make2DPlot(dataType,edgesNums){
         x: tempVectorX,
         y: tempVectorY,
         mode: "lines",
-        name: GraphObj.graphEdges[edgesNums[i]].typeRLC + ' ' + GraphObj.graphEdges[edgesNums[i]].edgeNum
+        name: GraphObj.graphEdges[i].__proto__.constructor.name + ' ' + GraphObj.graphEdges[edgesNums[i]].edgeNum
         });
     }
     Plotly.newPlot("output_plot", tempEdgeData);
@@ -239,7 +241,7 @@ function makeUITable() {
     clearTable();
     let headerStringArr = [];
     for (let i = 0; i < GraphObj.edgesCount; i++) {
-        headerStringArr.push(GraphObj.graphEdges[i].typeRLC + ' ' + GraphObj.graphEdges[i].edgeNum);
+        headerStringArr.push(GraphObj.graphEdges[i].__proto__.constructor.name + ' ' + GraphObj.graphEdges[i].edgeNum);
     }
     newTableLine(headerStringArr,true);
     
@@ -262,7 +264,7 @@ function makeDebugTable(dataType){
     let headerStringArr = [];
     headerStringArr.push("step #");
     for (let i = 1; i < GraphObj.edgesCount+1; i++) {
-        headerStringArr.push(GraphObj.graphEdges[i-1].typeRLC + ' ' + GraphObj.graphEdges[i-1].edgeNum);
+        headerStringArr.push(GraphObj.graphEdges[i].__proto__.constructor.name + ' ' + GraphObj.graphEdges[i-1].edgeNum);
     }
     newTableLine(headerStringArr,true);
     

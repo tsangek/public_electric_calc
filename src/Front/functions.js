@@ -198,7 +198,7 @@ function addInfoToSideMenu(value){
         let input = document.createElement("input");
         input.setAttribute("value",params[elem]);
         input.setAttribute("id",elem);
-        input.setAttribute("type","text");
+        input.setAttribute("type","number");
         input.setAttribute("idElement",value.id);
         // tempOption.innerHTML = edges[i].typeRLC + ' ' + edges[i].edgeNum;
 
@@ -221,7 +221,7 @@ function addInfoToSideMenu(value){
                 let id = input.id;
                 let val = input.value;
                 console.log("inputObjДО", obj);
-                obj.electricParameters[id] = val
+                obj.electricParameters[id] = parseFloat(val);
                 console.log("inputObjПОСЛЕ", obj);
                 console.log("input.value",input.value);
                 
