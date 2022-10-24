@@ -49,6 +49,10 @@ var condesatorStaticObj;
                     // this.electricParameters.D = buff.D; //false
                     // this.electricParameters.E = buff.E; //0
                     break;
+                case "transformer":
+                    this.electricParameters.L1 = buff.L1;
+                    this.electricParameters.L2 = buff.L2;
+                    break;
                 case "VoltageSourceSin":
                     this.electricParameters.R = buff.R; //4580
                     this.electricParameters.L = buff.L; //false

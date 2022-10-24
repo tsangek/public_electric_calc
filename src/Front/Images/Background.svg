@@ -105,5 +105,23 @@ xmlns:xlink="http://www.w3.org/1999/xlink"
 		
 		
 	</g>
+	<g id="transformer" stroke-width="15" pointer-events="visible">
+
+		<style>
+			.small {	font: italic 155px sans-serif; 
+						cursor: default;}
+		</style>
+		<text x="-50" y="200" class="small">transformer</text>
+		<path d="M -300 0 L -100 0"></path>
+		<path d="M -100 -300 L -100 300"></path>
+		<path d="M 100 -300 L 100 300"></path>
+		<path d="M 100 0 L 300 0"></path>
+
+		<path d="M -300 0 L -100 0" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M -100 -300 L -100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 -300 L 100 300" stroke-width="50" stroke="none" fill="none"></path>
+		<path d="M 100 0 L 300 0" stroke-width="50" stroke="none" fill="none"></path>
+		<rect x="-100" y="-300" width="200" height="600" stroke="none" fill="none"></rect>
+	</g>
 </svg>
 

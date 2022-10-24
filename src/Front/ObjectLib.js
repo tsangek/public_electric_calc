@@ -814,7 +814,7 @@ class ObjectConstant extends ObjectTemplate {
     }
     //--------------------------
     checkDirection(){
-        if(this.type == "R" || this.type == "C" || this.type == "LR" || this.type == "VoltageSourceSin" || this.type == "Diode" || this.type == "RLC"){ //костыль
+        if(this.type == "R" || this.type == "C" || this.type == "LR" || this.type == "VoltageSourceSin"|| this.type == "transformer" || this.type == "Diode" || this.type == "RLC"){ //костыль
             switch(this.rotateGrad){
                 case 0: 
                     this.direction = "Horizontal Right";

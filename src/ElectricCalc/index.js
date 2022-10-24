@@ -12,6 +12,8 @@ var dt;
 var selectedValueNum;
 var selectedDataTypeOption;
 
+var savedJson;
+
 var selectedEdges = [];
 //----------------------------------------------------------------
 var fileUploaded;
@@ -75,6 +77,14 @@ showBtn1.addEventListener('click', (event) => {
 //     makeDebugTable(selectedDataTypeOption.value);
 // });
 
+//----------------------------------------------------------------
+const rerunBtn1 = document.getElementById('calcRerun_btn');
+
+rerunBtn1.addEventListener('click', (event) => {
+    startCalc();
+});
+
+
 
 //----------------------------------------------------------------
 const inputField1 = document.getElementById('input1');
@@ -122,9 +132,10 @@ function loadDate(fileUploaded){
 // }
 //----------------------------------------------------------------
 function startCalc(json){
-    console.log("starCalc.json->",json);
+    if (json){savedJson = json}
+    console.log("starCalc.json->",savedJson);
     calcDataByTimesteps = [];
-    GraphObj = new Graph(json);
+    GraphObj = new Graph(savedJson);
     SolverObj = new Solver(GraphObj);
     makeSelectEdges(GraphObj.graphEdges);
     main();

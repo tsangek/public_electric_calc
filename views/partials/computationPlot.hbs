@@ -2,14 +2,32 @@
     <div class="row">
         <div class="col s2">
             <div class="leftMenu">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">Инструкция пользования сайтом</div>
+                        <div class="collapsible-body">
+                            <span>
+                                4.<b>Выбрать интересующий параметр</b> <i>в падающем меню "Выбор исследуемых величин"(Ток,А; Напряжение,В)</i> <br>
+                                5.<b>Выбрать элементы для вывода,</b> <i>в падающем меню "Выбор ребер"(edgeVoltageSourceSin 0,1,2)(можно выбирать несколько ребер)</i> <br>
+                                6.<b>"Show table", "Show UI":</b> <i>выводит данные расчета в виде таблицы(значение параметра от номера шага, величину ошибки от номера шага)</i><br>
+                                7.<b>"Показать график":</b> <i>выводит данные расчета в виде графика(значение параметра от времени)</i> <br>
+                                8.<i>Можно также, поменять шаг по времени<b> "dt"</b> и количество вычисляемых шагов<b> "N"</b> и провести еще один расчет нажав на <b>"Пересчитать"</b></i>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
                 {{!-- <div class="leftMenu" style="margin-top: 30px;"> --}}
-                <input type="file" id="file_selector">
-                <input type="button" id="parse_file_btn" value="start">
+                <div style="visibility: hidden;">
+                    <input type="file" id="file_selector">
+                    <input type="button" id="parse_file_btn" value="start">
+                </div>
+                
                 <p></p>
                 <label for="input1">dt</label>
                 <input type="number" id="input1" name="dt" value="0.000001">
                 <label for="input2">N</label>
                 <input type="number" id="input2" name="N" value="1000">
+                <input type="button" id="calcRerun_btn" value="Пересчитать">
                 
 
                 <p></p>

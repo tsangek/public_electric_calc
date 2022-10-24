@@ -93,9 +93,10 @@ SVGInjector(mySVGsToInject, null, function(){
     //adding menu elements
     pickMenu1.addElement('line',"lineStatic", menuLineClickCallback);
     pickMenu1.addElement('object',"resistor", menuDefaultClickCallback);
-    // pickMenu1.addElement('object',"capacitor", menuDefaultClickCallback);
+    pickMenu1.addElement('object',"capacitor", menuDefaultClickCallback);
     pickMenu1.addElement('object',"elSource", menuDefaultClickCallback);
     pickMenu1.addElement('object',"diode", menuDefaultClickCallback);
+    // pickMenu1.addElement('object',"transformer", menuDefaultClickCallback);
     
 
     // pickMenu2.addElement('object',"resistor", menuDefaultClickCallback);
